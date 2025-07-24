@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learn Letter X</title>
+<style>
+  body {
+    font-family: 'Comic Neue', cursive, Arial, sans-serif;
+    margin: 0; padding: 15px;
+    text-align: center;
+    background-image: url('9269493.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #b03e14;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    user-select: none;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+  .letters {
+    font-size: 12vw;
+    font-weight: 900;
+    color: #ff5733;
+    text-shadow: 1px 1px 0 #b03e14, 2px 2px 0 #b03e14;
+    display: flex;
+    align-items: baseline;
+  }
+  .letters small {
+    font-size: 7vw;
+    color: #7a2a0f;
+    vertical-align: super;
+    margin-left: 6px;
+    text-shadow: 1px 1px 0 #7a2a0f, 2px 2px 0 #7a2a0f;
+  }
+  #playLetterBtn {
+    background-color: #ff6f3c;
+    border: none;
+    border-radius: 50%;
+    width: 8vw;
+    height: 8vw;
+    min-width: 40px;
+    min-height: 40px;
+    color: white;
+    font-size: 4vw;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(255, 111, 60, 0.6);
+    transition: background-color 0.3s ease;
+  }
+  #playLetterBtn:hover {
+    background-color: #b03e14;
+  }
+  .images-container {
+    display: flex;
+    justify-content: center;
+    gap: 7vw 14vw;
+    margin: 10px 0 25px 0;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  .emoji-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14vw;
+    max-width: 140px;
+    min-width: 130px;
+  }
+  .emoji-block > div:first-child {
+    margin-bottom: 10px;
+  }
+  .word-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .word {
+    font-size: 3.5vw;
+    font-weight: 600;
+    color: #b03e14;
+    font-style: italic;
+    margin: 0;
+    white-space: nowrap;
+  }
+  button.word-sound-btn {
+    background-color: #ff6f3c;
+    border: none;
+    border-radius: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+    min-width: 25px;
+    min-height: 25px;
+    color: white;
+    font-size: 3vw;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(255, 111, 60, 0.6);
+    transition: background-color 0.3s ease;
+  }
+  button.word-sound-btn:hover {
+    background-color: #b03e14;
+  }
+  #startQuizBtn {
+    margin-top: 25px;
+    padding: 12px 50px;
+    font-size: 4.5vw;
+    border-radius: 12px;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(255, 87, 51, 0.5);
+    transition: background-color 0.3s ease;
+    max-width: 300px;
+    width: auto;
+  }
+  #startQuizBtn:hover {
+    background-color: #b03e14;
+  }
+  @media (max-width: 480px) {
+    .letters {
+      font-size: 15vw;
+    }
+    .letters small {
+      font-size: 9vw;
+    }
+    #playLetterBtn {
+      width: 10vw;
+      height: 10vw;
+      font-size: 5vw;
+    }
+    .emoji-block {
+      font-size: 17vw;
+      max-width: 160px;
+      min-width: 140px;
+    }
+    .word {
+      font-size: 4vw;
+    }
+    button.word-sound-btn {
+      width: 6vw;
+      height: 6vw;
+      font-size: 4vw;
+    }
+    #startQuizBtn {
+      font-size: 5vw;
+      padding: 14px 35px;
+      max-width: none;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="letters">X <small>x</small></div>
+  <button id="playLetterBtn" aria-label="Play letter X sound">🔈</button>
+</div>
+
+<div class="images-container" aria-label="Letter X images with words and sounds">
+  <div class="emoji-block">
+    <div>❌</div>
+    <div class="word-row">
+      <p class="word">X-ray</p>
+      <button class="word-sound-btn" data-word="X-ray" aria-label="Play sound X-ray">🔊</button>
+    </div>
+  </div>
+  <div class="emoji-block">
+    <div>🎮</div>
+    <div class="word-row">
+      <p class="word">Xbox</p>
+      <button class="word-sound-btn" data-word="Xbox" aria-label="Play sound Xbox">🔊</button>
+    </div>
+  </div>
+  <div class="emoji-block">
+    <div>📦</div>
+    <div class="word-row">
+      <p class="word">Box</p>
+      <button class="word-sound-btn" data-word="Box" aria-label="Play sound Box">🔊</button>
+    </div>
+  </div>
+</div>
+
+<button id="startQuizBtn">Start Quiz</button>
+
+<script>
+  let voices = [];
+
+  window.speechSynthesis.onvoiceschanged = () => {
+    voices = speechSynthesis.getVoices();
+  };
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const maleVoice = voices.find(v => v.lang.startsWith('en') && /male|man|boy/i.test(v.name)) 
+                       || voices.find(v => v.lang.startsWith('en')) 
+                       || voices[0];
+      if (maleVoice) utterance.voice = maleVoice;
+      utterance.lang = 'en-US';
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      speechSynthesis.speak(utterance);
+    }
+  }
+
+  document.getElementById('playLetterBtn').addEventListener('click', () => speak('X'));
+
+  document.querySelectorAll('button.word-sound-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const word = button.getAttribute('data-word');
+      speak(word);
+    });
+  });
+
+  document.getElementById('startQuizBtn').addEventListener('click', () => {
+    window.location.href = 'quiz_x.html'; // تأكد من وجود صفحة اختبار حرف X
+  });
+</script>
+
+</body>
+</html>

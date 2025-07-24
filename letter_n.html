@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learn Letter N</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      text-align: center;
+      color: #333;
+      background: url('9269493.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      z-index: -1;
+    }
+
+    .letter-container {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .uppercase {
+      font-size: 12rem;
+      font-weight: bold;
+      color: #ff5733;
+    }
+
+    .lowercase {
+      font-size: 7rem;
+      font-weight: bold;
+      color: #b03e14;
+      margin-left: 20px;
+    }
+
+    button {
+      font-size: 1.8rem;
+      padding: 18px 36px;
+      border-radius: 14px;
+      border: none;
+      background-color: #ff5733;
+      color: white;
+      cursor: pointer;
+    }
+
+    #startQuiz {
+      margin-top: 50px;
+      background-color: #4caf50;
+    }
+
+    .emoji-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .emoji-block {
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 10rem;
+    }
+
+    .word {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .sound-btn {
+      font-size: 2.5rem;
+      margin-top: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff5733;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="letter-container">
+    <span class="uppercase">N</span>
+    <span class="lowercase">n</span><br/>
+    <button onclick="playSound('N')">🔊 Play Letter Sound</button>
+  </div>
+
+  <div class="emoji-row">
+    <div class="emoji-block">
+      <div class="emoji">🐌</div>
+      <div class="word">Nail</div>
+      <button class="sound-btn" onclick="playSound('Nail')">🔊</button>
+    </div>
+    <div class="emoji-block">
+      <div class="emoji">👃</div>
+      <div class="word">Nose</div>
+      <button class="sound-btn" onclick="playSound('Nose')">🔊</button>
+    </div>
+    <div class="emoji-block">
+      <div class="emoji">🌃</div>
+      <div class="word">Night</div>
+      <button class="sound-btn" onclick="playSound('Night')">🔊</button>
+    </div>
+  </div>
+
+  <button id="startQuiz" onclick="startQuiz()">Start Quiz</button>
+
+  <script>
+    function playSound(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    function startQuiz() {
+      window.location.href = 'quiz_n.html';
+    }
+  </script>
+
+</body>
+</html>

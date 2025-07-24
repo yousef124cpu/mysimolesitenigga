@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Learn Letter H</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-image: url('9269493.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #b03e14;
+    text-align: center;
+    position: relative;
+    user-select: none;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: -1;
+  }
+  .letter-container {
+    margin-bottom: 30px;
+  }
+  .letter {
+    font-size: 12rem;
+    font-weight: 900;
+    color: #ff5733;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .letter-lower {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #b03e14;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  #playLetterBtn {
+    font-size: 1.8rem;
+    padding: 10px 30px;
+    background-color: #ff5733;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(255,87,51,0.5);
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  }
+  #playLetterBtn:hover {
+    background-color: #b03e14;
+  }
+  .emoji-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .emoji-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .emoji {
+    font-size: 8rem;
+    cursor: pointer;
+  }
+  .word-text {
+    margin-top: 8px;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #b03e14;
+  }
+  .sound-btn {
+    margin-top: 6px;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ff5733;
+  }
+  .sound-btn:hover {
+    color: #b03e14;
+  }
+  #startQuizBtn {
+    font-size: 1.8rem;
+    padding: 12px 40px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(76,175,80,0.5);
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+  }
+  #startQuizBtn:hover {
+    background-color: #357a38;
+  }
+</style>
+</head>
+<body>
+
+<div class="letter-container">
+  <span class="letter">H</span><span class="letter-lower">h</span><br/>
+  <button id="playLetterBtn" aria-label="Play letter H sound">Play Letter Sound</button>
+</div>
+
+<div class="emoji-row">
+  <div class="emoji-block">
+    <div class="emoji">🏠</div>
+    <div class="word-text">House</div>
+    <button class="sound-btn" aria-label="Play sound House">🔊</button>
+  </div>
+  <div class="emoji-block">
+    <div class="emoji">🐹</div>
+    <div class="word-text">Hamster</div>
+    <button class="sound-btn" aria-label="Play sound Hamster">🔊</button>
+  </div>
+  <div class="emoji-block">
+    <div class="emoji">🍯</div>
+    <div class="word-text">Honey</div>
+    <button class="sound-btn" aria-label="Play sound Honey">🔊</button>
+  </div>
+</div>
+
+<button id="startQuizBtn">Start Quiz</button>
+
+<script>
+  const words = ['House', 'Hamster', 'Honey'];
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      speechSynthesis.speak(utterance);
+    }
+  }
+
+  document.getElementById('playLetterBtn').addEventListener('click', () => {
+    speak('H');
+  });
+
+  const soundButtons = document.querySelectorAll('.sound-btn');
+  soundButtons.forEach((btn,i) => {
+    btn.addEventListener('click', () => {
+      speak(words[i]);
+    });
+  });
+
+  document.getElementById('startQuizBtn').addEventListener('click', () => {
+    window.location.replace('quiz_h.html');
+  });
+</script>
+
+</body>
+</html>

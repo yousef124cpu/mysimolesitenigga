@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Letter K</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-image: url('9269493.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: #333;
+      text-align: center;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.85);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin: 30px auto;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .emoji {
+      font-size: 6rem;
+      margin: 10px 0;
+    }
+
+    .options button {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 15px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6f3c;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background-color: #ff3c1a;
+    }
+
+    .correct {
+      background-color: green !important;
+    }
+
+    .wrong {
+      background-color: red !important;
+    }
+
+    #nextBtn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      font-size: 1.5rem;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 12px;
+      display: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #nextContainer {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Letter K Quiz</h1>
+
+  <div class="question" id="q1">
+    <p>Which word starts with the letter K?</p>
+    <div class="emoji">🦘</div>
+    <div class="options">
+      <button onclick="check(this, true)">Kangaroo</button>
+      <button onclick="check(this, false)">Rabbit</button>
+      <button onclick="check(this, false)">Monkey</button>
+    </div>
+  </div>
+
+  <div class="question" id="q2">
+    <p>What letter does this word start with?</p>
+    <div class="emoji">🥝</div>
+    <div class="options">
+      <button onclick="check(this, false)">T</button>
+      <button onclick="check(this, false)">Q</button>
+      <button onclick="check(this, true)">K</button>
+    </div>
+  </div>
+
+  <div id="nextContainer">
+    <button id="nextBtn" onclick="goNext()">Next Letter ➡️</button>
+  </div>
+
+  <script>
+    let q1Answered = false;
+    let q2Answered = false;
+
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    function check(button, isCorrect) {
+      const parentQuestion = button.closest('.question');
+      const buttons = parentQuestion.querySelectorAll("button");
+
+      // تأكد من أن هذا السؤال لم يُجب عليه
+      if ([...buttons].every(b => b.disabled)) return;
+
+      if (isCorrect) {
+        speak("Correct");
+        button.classList.add("correct");
+
+        // سجل الإجابة الصحيحة لهذا السؤال
+        if (parentQuestion.id === 'q1') q1Answered = true;
+        if (parentQuestion.id === 'q2') q2Answered = true;
+
+        // إظهار زر التالي فقط إذا تمت الإجابة على السؤالين
+        if (q1Answered && q2Answered) {
+          document.getElementById("nextBtn").style.display = "inline-block";
+        }
+      } else {
+        speak("Try again");
+        button.classList.add("wrong");
+        setTimeout(() => button.classList.remove("wrong"), 800);
+      }
+
+      // تعطيل كل الأزرار في هذا السؤال
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    function goNext() {
+      window.location.href = "letter_l.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz Letter C</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-image: url('9269493.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #b03e14;
+    text-align: center;
+    position: relative;
+    user-select: none;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: -1;
+  }
+  h1 {
+    color: #ff5733;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+  .question {
+    background: white;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(176, 62, 20, 0.2);
+    text-align: left;
+  }
+  .emoji {
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .options button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #ff6f3c;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  .options button:hover {
+    background-color: #b03e14;
+  }
+  .options button.correct {
+    background-color: #4caf50 !important;
+  }
+  .options button.wrong {
+    background-color: #e53935 !important;
+  }
+  #nextBtn {
+    display: none;
+    margin: 30px auto 0;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  #nextBtn:hover {
+    background-color: #357a38;
+  }
+</style>
+</head>
+<body>
+
+<h1>Letter C Quiz</h1>
+
+<div class="question" id="q1">
+  <p>What letter does this picture start with?</p>
+  <div class="emoji">🐱</div>
+  <div class="options">
+    <button data-correct="false">B</button>
+    <button data-correct="true">C</button>
+    <button data-correct="false">D</button>
+  </div>
+</div>
+
+<div class="question" id="q2">
+  <p>Which word starts with the letter C?</p>
+  <div class="options">
+    <button data-correct="true">Cat</button>
+    <button data-correct="false">Bee</button>
+    <button data-correct="false">Dog</button>
+  </div>
+</div>
+
+<button id="nextBtn">Next Letter</button>
+
+<script>
+  let correctCount = 0;
+  const totalQuestions = 2;
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      speechSynthesis.speak(utterance);
+    }
+  }
+
+  function disableButtons(questionDiv) {
+    questionDiv.querySelectorAll('button').forEach(btn => btn.disabled = true);
+  }
+
+  document.querySelectorAll('.options button').forEach(button => {
+    button.addEventListener('click', () => {
+      const questionDiv = button.closest('.question');
+      if(button.dataset.correct === 'true') {
+        button.classList.add('correct');
+        speak('Correct');
+        correctCount++;
+        disableButtons(questionDiv);
+        if(correctCount === totalQuestions) {
+          document.getElementById('nextBtn').style.display = 'block';
+        }
+      } else {
+        button.classList.add('wrong');
+        speak('Try again');
+        setTimeout(() => button.classList.remove('wrong'), 800);
+      }
+    });
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    window.location.replace('letter_d.html');
+  });
+</script>
+
+</body>
+</html>

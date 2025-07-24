@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Quiz Letter O</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    text-align: center;
+    background-image: url('9269493.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #b03e14;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+  }
+  h2 {
+    font-size: 7vw;
+    margin-bottom: 15px;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 #7a2a0f, 2px 2px 0 #7a2a0f, 3px 3px 0 #7a2a0f;
+  }
+  .question {
+    background: white;
+    margin: 8px auto;
+    max-width: 600px;
+    padding: 12px 12px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(176, 62, 20, 0.2);
+  }
+  .question p {
+    font-size: 1.8vw;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .emoji {
+    font-size: 15vw;
+    margin: 8px 0;
+  }
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  button.option-btn {
+    flex: 1 1 40%;
+    max-width: 160px;
+    background-color: #ff6f3c;
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 3.5vw;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button.option-btn:hover {
+    background-color: #b03e14;
+  }
+  button.option-btn.correct {
+    background-color: #4caf50 !important;
+  }
+  button.option-btn.wrong {
+    background-color: #e53935 !important;
+  }
+  #nextBtn {
+    display: none;
+    margin: 25px auto 0;
+    background-color: #b03e14;
+    padding: 12px 35px;
+    font-size: 4.5vw;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    max-width: 160px;
+    transition: background-color 0.3s ease;
+  }
+  #nextBtn:hover {
+    background-color: #7a2a0f;
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 9vw;
+    }
+    .question p {
+      font-size: 3.5vw;
+    }
+    .emoji {
+      font-size: 20vw;
+    }
+    button.option-btn {
+      font-size: 5vw;
+      max-width: none;
+      flex-basis: 100%;
+      padding: 10px;
+    }
+    #nextBtn {
+      font-size: 5.5vw;
+      padding: 14px 40px;
+      max-width: none;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2>Letter O Quiz</h2>
+
+<div class="question" id="q1">
+  <p>What letter does this picture start with?</p>
+  <div class="emoji" aria-label="Orange emoji">🍊</div>
+  <div class="options">
+    <button class="option-btn" data-correct="false">B</button>
+    <button class="option-btn" data-correct="true">O</button>
+    <button class="option-btn" data-correct="false">C</button>
+  </div>
+</div>
+
+<div class="question" id="q2">
+  <p>Which word starts with O?</p>
+  <div class="options">
+    <button class="option-btn" data-correct="true">Owl</button>
+    <button class="option-btn" data-correct="false">Dog</button>
+    <button class="option-btn" data-correct="false">Pig</button>
+  </div>
+</div>
+
+<button id="nextBtn">Next Letter</button>
+
+<script>
+  let correctCount = 0;
+  const totalQuestions = 2;
+
+  function speak(text) {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = speechSynthesis.getVoices();
+      const maleVoice = voices.find(v => v.lang.startsWith('en') && /male|man|boy/i.test(v.name)) 
+                       || voices.find(v => v.lang.startsWith('en')) 
+                       || voices[0];
+      if (maleVoice) utterance.voice = maleVoice;
+      utterance.lang = 'en-US';
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      speechSynthesis.speak(utterance);
+    }
+  }
+
+  function disableButtons(container) {
+    const buttons = container.querySelectorAll('button.option-btn');
+    buttons.forEach(btn => btn.disabled = true);
+  }
+
+  document.querySelectorAll('button.option-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      if (button.dataset.correct === 'true') {
+        button.classList.add('correct');
+        speak('Correct');
+        correctCount++;
+        disableButtons(button.closest('.question'));
+        if (correctCount === totalQuestions) {
+          document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+      } else {
+        button.classList.add('wrong');
+        speak('Try again');
+        setTimeout(() => button.classList.remove('wrong'), 1000);
+      }
+    });
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    window.location.href = 'letter_p.html'; // غيّر هذا الرابط حسب الحرف التالي
+  });
+</script>
+
+</body>
+</html>

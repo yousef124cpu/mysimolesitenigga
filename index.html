@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>موقع تعليم الحروف وتوليد رمز QR</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    color: #b03e14;
+  }
+  .letter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+  }
+  .letter-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(176, 62, 20, 0.3);
+    width: 140px;
+    text-align: center;
+  }
+  .letter-card h2 {
+    margin: 0 0 10px;
+    font-size: 3rem;
+    color: #b03e14;
+  }
+  .links {
+    display: flex;
+    justify-content: space-around;
+  }
+  .links a {
+    text-decoration: none;
+    color: white;
+    background-color: #b03e14;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  .links a:hover {
+    background-color: #7a2a0f;
+  }
+  #qrGenerator {
+    max-width: 450px;
+    margin: 40px auto 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(176, 62, 20, 0.3);
+    text-align: center;
+  }
+  #qrGenerator input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #b03e14;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+  #qrGenerator button {
+    background-color: #b03e14;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #qrGenerator button:hover {
+    background-color: #7a2a0f;
+  }
+  #qrcode {
+    margin-top: 20px;
+  }
+  @media (max-width: 480px) {
+    .letter-card {
+      width: 120px;
+      padding: 12px 10px;
+    }
+    .letter-card h2 {
+      font-size: 2.4rem;
+    }
+    .links a {
+      font-size: 0.8rem;
+      padding: 5px 8px;
+    }
+    #qrGenerator input[type="text"] {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>موقع تعليم الحروف وتوليد رمز QR</h1>
+
+<div class="letter-list" aria-label="قائمة حروف الأبجدية">
+  <div class="letter-card">
+    <h2>A</h2>
+    <div class="links">
+      <a href="letter_a.html" target="_blank" rel="noopener">تعليم</a>
+      <a href="quiz_a.html" target="_blank" rel="noopener">اختبار</a>
+    </div>
+  </div>
+  <div class="letter-card">
+    <h2>B</h2>
+    <div class="links">
+      <a href="letter_b.html" target="_blank" rel="noopener">تعليم</a>
+      <a href="quiz_b.html" target="_blank" rel="noopener">اختبار</a>
+    </div>
+  </div>
+  <script>
+    const container = document.querySelector('.letter-list');
+    const letters = 'CDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    letters.forEach(letter => {
+      const div = document.createElement('div');
+      div.className = 'letter-card';
+      div.innerHTML = `
+        <h2>${letter}</h2>
+        <div class="links">
+          <a href="letter_${letter.toLowerCase()}.html" target="_blank" rel="noopener">تعليم</a>
+          <a href="quiz_${letter.toLowerCase()}.html" target="_blank" rel="noopener">اختبار</a>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+  </script>
+</div>
+
+<div id="qrGenerator" aria-label="مولد رمز QR">
+  <input type="text" id="urlInput" placeholder="https://yourdomain.com/letter_a.html" aria-label="رابط الصفحة" />
+  <br />
+  <button onclick="generateQRCode()">توليد رمز QR</button>
+  <div id="qrcode" aria-live="polite" aria-atomic="true"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  let qrcode;
+  function generateQRCode() {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) {
+      alert('الرجاء إدخال رابط صحيح.');
+      return;
+    }
+    if (qrcode) {
+      qrcode.clear();
+      qrcode.makeCode(url);
+    } else {
+      qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: url,
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

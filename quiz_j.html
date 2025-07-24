@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Letter J</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-image: url('9269493.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: #333;
+      text-align: center;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.85);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin: 30px auto;
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .emoji {
+      font-size: 6rem;
+      margin: 10px 0;
+    }
+
+    .options button {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 15px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6f3c;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .options button:hover {
+      background-color: #ff3c1a;
+    }
+
+    .correct {
+      background-color: green !important;
+    }
+
+    .wrong {
+      background-color: red !important;
+    }
+
+    #nextBtn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      font-size: 1.5rem;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 12px;
+      display: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #nextContainer {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Letter J Quiz</h1>
+
+  <div class="question" id="q1">
+    <p>Which word starts with the letter J?</p>
+    <div class="emoji">🤹</div>
+    <div class="options">
+      <button onclick="check(this, true)">Juggler</button>
+      <button onclick="check(this, false)">Clown</button>
+      <button onclick="check(this, false)">Ball</button>
+    </div>
+  </div>
+
+  <div class="question" id="q2">
+    <p>What letter does this word start with?</p>
+    <div class="emoji">👖</div>
+    <div class="options">
+      <button onclick="check(this, false)">P</button>
+      <button onclick="check(this, true)">J</button>
+      <button onclick="check(this, false)">K</button>
+    </div>
+  </div>
+
+  <div id="nextContainer">
+    <button id="nextBtn" onclick="goNext()">Next Letter ➡️</button>
+  </div>
+
+  <script>
+    let score = 0;
+
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    function check(button, isCorrect) {
+      if (button.disabled) return;
+
+      if (isCorrect) {
+        speak("Correct");
+        button.classList.add("correct");
+        score++;
+        if (score === 2) {
+          document.getElementById("nextBtn").style.display = "inline-block";
+        }
+      } else {
+        speak("Try again");
+        button.classList.add("wrong");
+        setTimeout(() => button.classList.remove("wrong"), 800);
+      }
+
+      const all = button.parentElement.querySelectorAll("button");
+      all.forEach(btn => btn.disabled = true);
+    }
+
+    function goNext() {
+      window.location.href = "letter_k.html";
+    }
+  </script>
+
+</body>
+</html>
