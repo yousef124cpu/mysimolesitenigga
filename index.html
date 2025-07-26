@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fun Alphabet Learning</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+  body {
+    font-family: 'Comic Neue', cursive, Arial, sans-serif;
+    margin: 0;
+    padding: 50px 20px;
+    background: url('assets/images/9269493.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+    text-align: center;
+    overflow-x: hidden;
+    user-select: none;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(4px);
+    z-index: -1;
+  }
+
+  h1 {
+    font-size: 3.8em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #2c3e50;
+    animation: colorShift 6s ease-in-out infinite alternate;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #34495e;
+    text-shadow: 0 1px 3px rgba(255,255,255,0.7);
+  }
+
+  @keyframes colorShift {
+    0% { color: #2c3e50; }
+    50% { color: #e67e22; }
+    100% { color: #2980b9; }
+  }
+
+  .letters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .letter-link {
+    background: linear-gradient(145deg, #f39c12, #d35400);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 2.8em;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+    box-shadow:
+      0 0 8px #f39c12,
+      0 4px 15px rgba(211, 84, 0, 0.7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounce 2.5s ease infinite;
+  }
+
+  .letter-link:nth-child(even) {
+    animation-delay: 0.3s;
+  }
+  .letter-link:nth-child(3n) {
+    animation-delay: 0.6s;
+  }
+
+  .letter-link:hover,
+  .letter-link:focus {
+    transform: scale(1.3) rotate(10deg);
+    box-shadow:
+      0 0 20px #f39c12,
+      0 6px 25px rgba(211, 84, 0, 0.9);
+    outline: none;
+    color: #fff;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+  }
+
+  footer {
+    margin-top: 50px;
+    font-size: 1em;
+    color: #7f8c8d;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.8em;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    .letter-link {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 2em;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1>🎉 Let’s Learn the Alphabet! 🎉</h1>
+  <p>Tap or click a letter below to discover fun words, sounds, and quizzes. Ready? Let’s play and learn!</p>
+
+  <div class="letters-container" role="list" aria-label="Alphabet letters navigation">
+    <a href="letters/a.html" class="letter-link" aria-label="Letter A" role="listitem">A</a>
+    <a href="letters/b.html" class="letter-link" aria-label="Letter B" role="listitem">B</a>
+    <a href="letters/c.html" class="letter-link" aria-label="Letter C" role="listitem">C</a>
+    <a href="letters/d.html" class="letter-link" aria-label="Letter D" role="listitem">D</a>
+    <a href="letters/e.html" class="letter-link" aria-label="Letter E" role="listitem">E</a>
+    <a href="letters/f.html" class="letter-link" aria-label="Letter F" role="listitem">F</a>
+    <a href="letters/g.html" class="letter-link" aria-label="Letter G" role="listitem">G</a>
+    <a href="letters/h.html" class="letter-link" aria-label="Letter H" role="listitem">H</a>
+    <a href="letters/i.html" class="letter-link" aria-label="Letter I" role="listitem">I</a>
+    <a href="letters/j.html" class="letter-link" aria-label="Letter J" role="listitem">J</a>
+    <a href="letters/k.html" class="letter-link" aria-label="Letter K" role="listitem">K</a>
+    <a href="letters/l.html" class="letter-link" aria-label="Letter L" role="listitem">L</a>
+    <a href="letters/m.html" class="letter-link" aria-label="Letter M" role="listitem">M</a>
+    <a href="letters/n.html" class="letter-link" aria-label="Letter N" role="listitem">N</a>
+    <a href="letters/o.html" class="letter-link" aria-label="Letter O" role="listitem">O</a>
+    <a href="letters/p.html" class="letter-link" aria-label="Letter P" role="listitem">P</a>
+    <a href="letters/q.html" class="letter-link" aria-label="Letter Q" role="listitem">Q</a>
+    <a href="letters/r.html" class="letter-link" aria-label="Letter R" role="listitem">R</a>
+    <a href="letters/s.html" class="letter-link" aria-label="Letter S" role="listitem">S</a>
+    <a href="letters/t.html" class="letter-link" aria-label="Letter T" role="listitem">T</a>
+    <a href="letters/u.html" class="letter-link" aria-label="Letter U" role="listitem">U</a>
+    <a href="letters/v.html" class="letter-link" aria-label="Letter V" role="listitem">V</a>
+    <a href="letters/w.html" class="letter-link" aria-label="Letter W" role="listitem">W</a>
+    <a href="letters/x.html" class="letter-link" aria-label="Letter X" role="listitem">X</a>
+    <a href="letters/y.html" class="letter-link" aria-label="Letter Y" role="listitem">Y</a>
+    <a href="letters/z.html" class="letter-link" aria-label="Letter Z" role="listitem">Z</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Alphabet Learning. All rights reserved.
+  </footer>
+
+</body>
+</html>
