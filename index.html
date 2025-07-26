@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>موقع تعليم الحروف وتوليد رمز QR</title>
+<title></title>learning letters</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -105,7 +105,7 @@
 </head>
 <body>
 
-<h1>موقع تعليم الحروف وتوليد رمز QR</h1>
+<h1></h1>learning letters</h1>
 
 <div class="letter-list" aria-label="قائمة حروف الأبجدية">
   <div class="letter-card">
@@ -140,33 +140,7 @@
   </script>
 </div>
 
-<div id="qrGenerator" aria-label="مولد رمز QR">
-  <input type="text" id="urlInput" placeholder="https://yourdomain.com/letter_a.html" aria-label="رابط الصفحة" />
-  <br />
-  <button onclick="generateQRCode()">توليد رمز QR</button>
-  <div id="qrcode" aria-live="polite" aria-atomic="true"></div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script>
-  let qrcode;
-  function generateQRCode() {
-    const url = document.getElementById('urlInput').value.trim();
-    if (!url) {
-      alert('الرجاء إدخال رابط صحيح.');
-      return;
-    }
-    if (qrcode) {
-      qrcode.clear();
-      qrcode.makeCode(url);
-    } else {
-      qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: url,
-        width: 200,
-        height: 200,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
       });
     }
   }
